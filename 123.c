@@ -8,20 +8,20 @@
 #define N 30
 
 
-void main_a(); //ç®¡ç†å‘˜ç•Œé¢
-void main_v(); //æŠ•ç¥¨è€…è€…ç•Œé¢
-void addcandidate(); // åˆ›å»ºå€™é€‰äºº
-void addUser();//åˆ›å»ºæŠ•ç¥¨è€…
-void search(); //æŸ¥è¯¢å€™é€‰äººä¿¡æ¯
-void scan();//æµè§ˆå€™é€‰äººä¿¡æ¯
-void vote();  //æŠ•ç¥¨è€…æŠ•ç¥¨
-void read();//è¯»å–å€™é€‰äººä¿¡æ¯
-void save();//å­˜å‚¨å€™é€‰äººä¿¡æ¯
-void sort();//æ•´ç†æ‰€æœ‰æŠ•ç¥¨
-void effectivevoting();//æœ‰æ•ˆæŠ•ç¥¨æ•°
-void empty();//æ¸…ç©ºå€™é€‰äºº
+void main_a(); //¹ÜÀíÔ±½çÃæ
+void main_v(); //Í¶Æ±ÕßÕß½çÃæ
+void addcandidate(); // ´´½¨ºòÑ¡ÈË
+void addUser();//´´½¨Í¶Æ±Õß
+void search(); //²éÑ¯ºòÑ¡ÈËĞÅÏ¢
+void scan();//ä¯ÀÀºòÑ¡ÈËĞÅÏ¢
+void vote();  //Í¶Æ±ÕßÍ¶Æ±
+void read();//¶ÁÈ¡ºòÑ¡ÈËĞÅÏ¢
+void save();//´æ´¢ºòÑ¡ÈËĞÅÏ¢
+void sort();//ÕûÀíËùÓĞÍ¶Æ±
+void effectivevoting();//ÓĞĞ§Í¶Æ±Êı
+void empty();//Çå¿ÕºòÑ¡ÈË
 
-void Votexiugai();//ç¥¨æ•°ä¿®æ”¹
+void Votexiugai();//Æ±ÊıĞŞ¸Ä
 
 int total=0;
 int c_total=0;
@@ -29,21 +29,21 @@ int i=0;
 
 
 
-typedef struct candidate//å€™é€‰äººæ•°æ®ç»“æ„ä½“
+typedef struct candidate//ºòÑ¡ÈËÊı¾İ½á¹¹Ìå
 {
-    long number;//å€™é€‰äººç¼–å·
-    char name[20];//å€™é€‰äººå§“å
-    char intro[400];//å€™é€‰äººç®€ä»‹
-    int vote;//å€™é€‰äººå¾—ç¥¨æ•°
+    long number;//ºòÑ¡ÈË±àºÅ
+    char name[20];//ºòÑ¡ÈËĞÕÃû
+    char intro[400];//ºòÑ¡ÈË¼ò½é
+    int vote;//ºòÑ¡ÈËµÃÆ±Êı
 }candidate;
 
 
 
-typedef struct user//æŠ•ç¥¨è€…æ•°æ®ç»“æ„ä½“
+typedef struct user//Í¶Æ±ÕßÊı¾İ½á¹¹Ìå
 {
-  char name[20];//æŠ•ç¥¨è€…å§“å
-  char ps[8];//å¯¹åº”å¯†ç 
-  int power;//æƒé™
+  char name[20];//Í¶Æ±ÕßĞÕÃû
+  char ps[8];//¶ÔÓ¦ÃÜÂë
+  int power;//È¨ÏŞ
 }user;
 
 
@@ -54,7 +54,7 @@ user total_user[N];
 
 
 
-void main_v()//æŠ•ç¥¨è€…è€…ç•Œé¢
+void main_v()//Í¶Æ±ÕßÕß½çÃæ
 {
 
 
@@ -62,10 +62,10 @@ void main_v()//æŠ•ç¥¨è€…è€…ç•Œé¢
     do
     {
         printf("*************************************************************\n");
-        printf("********************æ¬¢è¿è¿›å…¥æŠ•ç¥¨å‘˜ç•Œé¢***********************\n");
+        printf("********************»¶Ó­½øÈëÍ¶Æ±Ô±½çÃæ***********************\n");
         printf("*************************************************************\n");
-        printf("**  1.æµè§ˆæ‰€æœ‰å€™é€‰äºº              2.æŸ¥è¯¢å€™é€‰äººä¿¡æ¯         **\n");
-        printf("**  3.æŠ•ç¥¨                        4.é€€å‡º                   **\n");
+        printf("**  1.ä¯ÀÀËùÓĞºòÑ¡ÈË              2.²éÑ¯ºòÑ¡ÈËĞÅÏ¢         **\n");
+        printf("**  3.Í¶Æ±                        4.ÍË³ö                   **\n");
         scanf("%d",&key);
 
         switch(key)
@@ -80,23 +80,23 @@ void main_v()//æŠ•ç¥¨è€…è€…ç•Œé¢
      }while(key!=4);
 }
 
-void vote()  //æŠ•ç¥¨è€…æŠ•ç¥¨
+void vote()  //Í¶Æ±ÕßÍ¶Æ±
 {
 
 
-    long candidatenum;//å®šä¹‰è¿›è¡Œæ“ä½œæ—¶çš„ä¸´æ—¶ç»“æ„ä½“å˜é‡
+    long candidatenum;//¶¨Òå½øĞĞ²Ù×÷Ê±µÄÁÙÊ±½á¹¹Ìå±äÁ¿
     int i,flag;
-    char DataFile[20]="DataFile.txt",next;// DataFileå­˜å‚¨å€™é€‰äººä¿¡æ¯çš„æ–‡ä»¶åï¼Œnextä¸ºæ˜¯å¦è¿›è¡Œä¸‹ä¸€æ¬¡æŠ•æ ‡æ“ä½œçš„é€‰é¡¹
+    char DataFile[20]="DataFile.txt",next;// DataFile´æ´¢ºòÑ¡ÈËĞÅÏ¢µÄÎÄ¼şÃû£¬nextÎªÊÇ·ñ½øĞĞÏÂÒ»´ÎÍ¶±ê²Ù×÷µÄÑ¡Ïî
     candidate TempS;
     FILE *fp;
 
 begin:
 
-    flag=0;//flagç”¨æ¥æ ‡å¿—æ˜¯å¦æ‰¾å¯¹åº”ç¼–å·ï¼Œå³æŠ•ç¥¨æ˜¯å¦æˆåŠŸ
+    flag=0;//flagÓÃÀ´±êÖ¾ÊÇ·ñÕÒ¶ÔÓ¦±àºÅ£¬¼´Í¶Æ±ÊÇ·ñ³É¹¦
     read();
-    printf("è¯·è¾“å…¥æ‚¨è¦æŠ•ç¥¨çš„å€™é€‰äººçš„å·ç :");
+    printf("ÇëÊäÈëÄúÒªÍ¶Æ±µÄºòÑ¡ÈËµÄºÅÂë:");
     scanf("%ld",&candidatenum);
-    printf("æ‚¨æ‰€æŠ•ç¥¨çš„å€™é€‰äººå·ç æ˜¯:%ld\n",candidatenum);
+    printf("ÄúËùÍ¶Æ±µÄºòÑ¡ÈËºÅÂëÊÇ:%ld\n",candidatenum);
     for(i=0;i<c_total;i++)
     {
         if(c_man[i].number==candidatenum)
@@ -107,12 +107,12 @@ begin:
     }
     if(flag)
     {
-        printf("æŠ•ç¥¨æˆåŠŸ\n");
+        printf("Í¶Æ±³É¹¦\n");
 
 
         fp=fopen(DataFile,"wb");
 
-        if(fp==NULL)//å¦‚æœå½“å‰æ–‡ä»¶ä¸å­˜åœ¨ï¼Œæç¤ºæ‰“å¼€æ–‡ä»¶å¤±è´¥
+        if(fp==NULL)//Èç¹ûµ±Ç°ÎÄ¼ş²»´æÔÚ£¬ÌáÊ¾´ò¿ªÎÄ¼şÊ§°Ü
         {
             printf("\nOpen file is fail!End with any key.\n",DataFile);
             perror("Open file fail");
@@ -129,12 +129,12 @@ begin:
     }
     else
     {
-        printf("æŠ•ç¥¨å¤±è´¥ï¼æ‚¨è¦æŠ•ç¥¨çš„å·ç ä¸å­˜åœ¨\n");
-        printf("æŒ‰ä»»æ„é”®è¿”å›é¦–é¡µï¼             \n");
+        printf("Í¶Æ±Ê§°Ü£¡ÄúÒªÍ¶Æ±µÄºÅÂë²»´æÔÚ\n");
+        printf("°´ÈÎÒâ¼ü·µ»ØÊ×Ò³£¡             \n");
         getch();
         return;
     }
-    fp=fopen(DataFile,"rb");// æ˜¾ç¤ºæŠ•ç¥¨åçš„æƒ…å†µ
+    fp=fopen(DataFile,"rb");// ÏÔÊ¾Í¶Æ±ºóµÄÇé¿ö
 
 
     if(fp==NULL)
@@ -145,8 +145,8 @@ begin:
         exit(1);
     }
 
-        printf("æ•´ç†åçš„æœ€æ–°æŠ•ç¥¨æƒ…å†µ:\n");
-        printf("\nå€™é€‰äººå·ç      \tå€™é€‰äººå§“å      \tç¥¨æ•°\n");//"\t"  æ¨ªå‘è·³åˆ°ä¸‹ä¸€åˆ¶è¡¨ç¬¦ä½ç½®
+        printf("ÕûÀíºóµÄ×îĞÂÍ¶Æ±Çé¿ö:\n");
+        printf("\nºòÑ¡ÈËºÅÂë     \tºòÑ¡ÈËĞÕÃû      \tÆ±Êı\n");//"\t"  ºáÏòÌøµ½ÏÂÒ»ÖÆ±í·ûÎ»ÖÃ
 
     while(fread(&TempS,sizeof(candidate),1,fp)!=(int)NULL)
     {
@@ -157,7 +157,7 @@ begin:
 
     fclose(fp);
 
-    printf("\nç»§ç»­å—?æ˜¯(Y)/å¦(N): ");
+    printf("\n¼ÌĞøÂğ?ÊÇ(Y)/·ñ(N): ");
 
     fflush(stdin);
 
@@ -169,20 +169,20 @@ begin:
 
 }
 
-void main_a()//ç®¡ç†å‘˜ç•Œé¢
+void main_a()//¹ÜÀíÔ±½çÃæ
 {
 
     int key;
     do
     {
         printf("*************************************************************\n");
-        printf("********************æ¬¢è¿è¿›å…¥ç®¡ç†å‘˜ç•Œé¢***********************\n");
+        printf("********************»¶Ó­½øÈë¹ÜÀíÔ±½çÃæ***********************\n");
         printf("*************************************************************\n");
-        printf("**  1.åˆ›å»ºæ–°å€™é€‰äºº                    2.åˆ›å»ºæ–°ç”¨æˆ·         **\n");
-        printf("**  3.æŸ¥è¯¢å€™é€‰äººä¿¡æ¯                  4.æµè§ˆæ‰€æœ‰å€™é€‰äºº     **\n");
-        printf("**  5.æ•´ç†æ‰€æœ‰æŠ•ç¥¨                    6.æœ‰æ•ˆæŠ•ç¥¨æ•°         **\n");
-        printf("**  7.æ¸…ç©ºå€™é€‰äººä¿¡æ¯                  8.ç¥¨æ•°æ¸…é›¶           **\n");
-        printf("**                   0.é€€å‡º                                **\n");
+        printf("**  1.´´½¨ĞÂºòÑ¡ÈË                    2.´´½¨ĞÂÓÃ»§         **\n");
+        printf("**  3.²éÑ¯ºòÑ¡ÈËĞÅÏ¢                  4.ä¯ÀÀËùÓĞºòÑ¡ÈË     **\n");
+        printf("**  5.ÕûÀíËùÓĞÍ¶Æ±                    6.ÓĞĞ§Í¶Æ±Êı         **\n");
+        printf("**  7.Çå¿ÕºòÑ¡ÈËĞÅÏ¢                  8.Æ±ÊıÇåÁã           **\n");
+        printf("**                   0.ÍË³ö                                **\n");
         scanf("%d",&key);
         switch(key)
         {
@@ -201,7 +201,7 @@ void main_a()//ç®¡ç†å‘˜ç•Œé¢
    }while(key!=0);
 }
 
-void addcandidate()//åˆ›å»ºå€™é€‰äºº
+void addcandidate()//´´½¨ºòÑ¡ÈË
 {
 
     char DataFile[20]="DataFile.txt";
@@ -214,15 +214,15 @@ void addcandidate()//åˆ›å»ºå€™é€‰äºº
 
     do
     {
-      printf("                 *****************åˆ›å»ºæ–°å€™é€‰äºº*****************\n");
-      printf("è¯·è¾“å…¥:");
+      printf("                 *****************´´½¨ĞÂºòÑ¡ÈË*****************\n");
+      printf("ÇëÊäÈë:");
 
-      printf("å€™é€‰äººå·ç :");scanf("%ld",&TempS.number);
-        for(i=0;i<c_total;i++)//æ£€æŸ¥è¾“å…¥ç¼–å·æ˜¯å¦æœ‰é‡å¤
+      printf("ºòÑ¡ÈËºÅÂë:");scanf("%ld",&TempS.number);
+        for(i=0;i<c_total;i++)//¼ì²éÊäÈë±àºÅÊÇ·ñÓĞÖØ¸´
         {
             if(TempS.number==c_man[i].number)
             {
-                printf("è¯¥å·ç å·²å­˜åœ¨.æŒ‰ä»»æ„é”®æµè§ˆæ‰€æœ‰å€™é€‰äºº...");
+                printf("¸ÃºÅÂëÒÑ´æÔÚ.°´ÈÎÒâ¼üä¯ÀÀËùÓĞºòÑ¡ÈË...");
                 getch();
                 over_flag=1;
                 break;
@@ -233,7 +233,7 @@ void addcandidate()//åˆ›å»ºå€™é€‰äºº
             over_flag=0;
             continue;
         }
-        printf("        å§“å:");scanf("%s",&TempS.name);
+        printf("        ĞÕÃû:");scanf("%s",&TempS.name);
 
         TempS.name[19]='\0';
 
@@ -241,7 +241,7 @@ void addcandidate()//åˆ›å»ºå€™é€‰äºº
         {
             if(strcmp(TempS.name,c_man[i].name)==0)
             {
-                printf("è¯¥å§“åå·²å­˜åœ¨ï¼è¯·å†è¾“å…¥ä¸€æ¬¡ï¼æŒ‰ä»»æ„é”®ç»§ç»­...");
+                printf("¸ÃĞÕÃûÒÑ´æÔÚ£¡ÇëÔÙÊäÈëÒ»´Î£¡°´ÈÎÒâ¼ü¼ÌĞø...");
                 getch();
                 over_flag=1;
                 break;
@@ -252,12 +252,12 @@ void addcandidate()//åˆ›å»ºå€™é€‰äºº
             over_flag=0;
             continue;
         }
-        printf("        ç®€ä»‹:");
+        printf("        ¼ò½é:");
         fflush(stdin);
         gets(TempS.intro);
         TempS.intro[399]='\0';
         TempS.vote=0;
-        c_man[c_total]=TempS;//å°†æ•°æ®åŠ å…¥åŸå§‹æ•°æ®,ç”¨äºä¸‹ä¸€æ¬¡è¾“å…¥æ¯”è¾ƒ
+        c_man[c_total]=TempS;//½«Êı¾İ¼ÓÈëÔ­Ê¼Êı¾İ,ÓÃÓÚÏÂÒ»´ÎÊäÈë±È½Ï
         c_total++;
         if(fwrite(&TempS,sizeof(candidate),1,fp)!=1)
         {
@@ -266,7 +266,7 @@ void addcandidate()//åˆ›å»ºå€™é€‰äºº
             getch();
             exit(1);
         }
-        printf("è¦ç»§ç»­åˆ›å»ºæ–°çš„å€™é€‰äººå—?æ˜¯(Y)/å¦(N): ");
+        printf("Òª¼ÌĞø´´½¨ĞÂµÄºòÑ¡ÈËÂğ?ÊÇ(Y)/·ñ(N): ");
 
         fflush(stdin);
 
@@ -276,27 +276,27 @@ void addcandidate()//åˆ›å»ºå€™é€‰äºº
 
 
     fclose(fp);
-    printf("å€™é€‰äººèµ„æ–™ï¼š\n");    // åœ¨å±å¹•ä¸Šæ˜¾ç¤ºæ–‡ä»¶å†…å®¹
+    printf("ºòÑ¡ÈË×ÊÁÏ£º\n");    // ÔÚÆÁÄ»ÉÏÏÔÊ¾ÎÄ¼şÄÚÈİ
     printf("*****************************************************************");
     fp=fopen(DataFile,"rb");
     if(fp==NULL)
     {
-        printf("\nOpen file %s fail! ä»»æ„é”®ç»“æŸ \n",DataFile);
+        printf("\nOpen file %s fail! ÈÎÒâ¼ü½áÊø \n",DataFile);
         perror("Open file fail");
         getch();
         exit(1);
     }
     while(fread(&TempS,sizeof(candidate),1,fp)!=(int)NULL)
     {
-        printf("\nå·ç :%-15ldå§“å:%-15sç®€ä»‹:%s",TempS.number,TempS.name,TempS.intro);
+        printf("\nºÅÂë:%-15ldĞÕÃû:%-15s¼ò½é:%s",TempS.number,TempS.name,TempS.intro);
     }
     fclose(fp);
     printf("\n*****************************************************************");
-    printf("\næŒ‰ä»»æ„é”®è¿”å›é¦–é¡µï¼\n");
+    printf("\n°´ÈÎÒâ¼ü·µ»ØÊ×Ò³£¡\n");
     getch();
 }
 
-void read()//è¯»å–å€™é€‰äººä¿¡æ¯
+void read()//¶ÁÈ¡ºòÑ¡ÈËĞÅÏ¢
 {
 
 
@@ -306,7 +306,7 @@ void read()//è¯»å–å€™é€‰äººä¿¡æ¯
     fp=fopen(DataFile,"rb");
     if(fp==NULL)
     {
-        printf("\nOpen file %s fail! ä»»æ„é”®ç»“æŸ \n",DataFile);
+        printf("\nOpen file %s fail! ÈÎÒâ¼ü½áÊø \n",DataFile);
         perror("Open file fail");
         getch();
         exit(1);
@@ -318,19 +318,19 @@ void read()//è¯»å–å€™é€‰äººä¿¡æ¯
     fclose(fp);
 }
 
-void addUser()//åˆ›å»ºç”¨æˆ·
+void addUser()//´´½¨ÓÃ»§
 {
 
     FILE *fp=NULL;
-    char DataFile[20]="ç”¨æˆ·.txt";//å­˜å‚¨æŠ•ç¥¨äººä¿¡æ¯çš„æ–‡ä»¶å
+    char DataFile[20]="ÓÃ»§.txt";//´æ´¢Í¶Æ±ÈËĞÅÏ¢µÄÎÄ¼şÃû
     user TempS;
     int over_flag=0;
     char c;
-    fp=fopen("ç”¨æˆ·.txt","rb");//è¯»å…¥åŸå§‹æ•°æ®,ç”¨äºæ£€æŸ¥è¾“å…¥æ˜¯å¦æœ‰é‡å¤
+    fp=fopen("ÓÃ»§.txt","rb");//¶ÁÈëÔ­Ê¼Êı¾İ,ÓÃÓÚ¼ì²éÊäÈëÊÇ·ñÓĞÖØ¸´
 
     if(fp==NULL)
     {
-        printf("\nOpen file %s fail! ä»»æ„é”®ç»“æŸ \n",DataFile);
+        printf("\nOpen file %s fail! ÈÎÒâ¼ü½áÊø \n",DataFile);
         perror("Open file fail");
         getch();
         exit(1);
@@ -346,15 +346,15 @@ void addUser()//åˆ›å»ºç”¨æˆ·
     fp=fopen(DataFile,"ab+");
     do
     {
-        printf("                *****************åˆ›å»ºæ–°ç”¨æˆ·*****************                   ");
-        printf("è¯·è¾“å…¥:");
-        printf("ç”¨æˆ·å:");scanf("%s",&TempS.name);
+        printf("                *****************´´½¨ĞÂÓÃ»§*****************                   ");
+        printf("ÇëÊäÈë:");
+        printf("ÓÃ»§Ãû:");scanf("%s",&TempS.name);
         TempS.name[19]='\0';
-        for(i=0;i<total;i++)//æ£€æŸ¥è¾“å…¥å§“åæ˜¯å¦æœ‰é‡å¤
+        for(i=0;i<total;i++)//¼ì²éÊäÈëĞÕÃûÊÇ·ñÓĞÖØ¸´
         {
             if(strcmp(TempS.name,total_user[i].name)==0)
             {
-                printf("è¯¥ç”¨æˆ·åå·²å­˜åœ¨ï¼æŒ‰ä»»æ„é”®æµè§ˆæ‰€æœ‰ç”¨æˆ·...");
+                printf("¸ÃÓÃ»§ÃûÒÑ´æÔÚ£¡°´ÈÎÒâ¼üä¯ÀÀËùÓĞÓÃ»§...");
                 getch();
                 over_flag=1;
                 break;
@@ -365,13 +365,13 @@ void addUser()//åˆ›å»ºç”¨æˆ·
             over_flag=0;
             continue;
         }
-        printf("  å¯†ç :");
+        printf("  ÃÜÂë:");
 
         scanf("%s",&TempS.ps);
 
         TempS.ps[7]='\0';
 
-        printf("  æƒé™:");
+        printf("  È¨ÏŞ:");
 
         scanf("%d",&TempS.power);
 
@@ -379,13 +379,13 @@ void addUser()//åˆ›å»ºç”¨æˆ·
         {
             TempS.power=0;
         }
-        total_user[total]=TempS;//å°†æ•°æ®åŠ å…¥åŸå§‹æ•°æ®
+        total_user[total]=TempS;//½«Êı¾İ¼ÓÈëÔ­Ê¼Êı¾İ
 
         total++;
 
         if(fwrite(&TempS,sizeof(user),1,fp)!=1)
         {
-            printf("\nwrite file is fail! ä»»æ„é”®ç»“æŸ\n",DataFile);
+            printf("\nwrite file is fail! ÈÎÒâ¼ü½áÊø\n",DataFile);
 
             perror("write file fail");
 
@@ -393,7 +393,7 @@ void addUser()//åˆ›å»ºç”¨æˆ·
 
             exit(1);
         }
-        printf("è¦ç»§ç»­åˆ›å»ºæ–°ç”¨æˆ·å—?æ˜¯(Y)/å¦(N):");
+        printf("Òª¼ÌĞø´´½¨ĞÂÓÃ»§Âğ?ÊÇ(Y)/·ñ(N):");
         getchar();
 
         c=getchar();
@@ -402,9 +402,9 @@ void addUser()//åˆ›å»ºç”¨æˆ·
 
     fclose(fp);
 
-    printf("ç”¨æˆ·èµ„æ–™æ•°æ®å¤„ç†å®Œæ¯•.\n",DataFile);//åœ¨å±å¹•ä¸Šæ˜¾ç¤ºæ–‡ä»¶å†…å®¹
+    printf("ÓÃ»§×ÊÁÏÊı¾İ´¦ÀíÍê±Ï.\n",DataFile);//ÔÚÆÁÄ»ÉÏÏÔÊ¾ÎÄ¼şÄÚÈİ
 
-    printf("æ‰€æœ‰ç”¨æˆ·å…·ä½“æƒ…å†µå¦‚ä¸‹:\n");
+    printf("ËùÓĞÓÃ»§¾ßÌåÇé¿öÈçÏÂ:\n");
 
     fp=fopen(DataFile,"rb");
 
@@ -413,13 +413,13 @@ void addUser()//åˆ›å»ºç”¨æˆ·
     {
         printf("\nOpen file is fail! End With any key \n",DataFile);
 
-        perror("Open file fail");//å°†é”™è¯¯ä¿¡æ¯è¾“å‡º
+        perror("Open file fail");//½«´íÎóĞÅÏ¢Êä³ö
 
         getch();
 
         exit(1);
     }
-    printf("\nå§“å\t\tå¯†ç \t\tæƒé™\n");
+    printf("\nĞÕÃû\t\tÃÜÂë\t\tÈ¨ÏŞ\n");
 
     while(fread(&TempS,sizeof(user),1,fp)!=(int)NULL)
     {
@@ -429,33 +429,33 @@ void addUser()//åˆ›å»ºç”¨æˆ·
 
     printf("************************************************************");
 
-    printf("\næŒ‰ä»»æ„é”®è¿”å›é¦–é¡µï¼\n");
+    printf("\n°´ÈÎÒâ¼ü·µ»ØÊ×Ò³£¡\n");
 
     getch();
 
 }
 
-void scan()//æµè§ˆå€™é€‰äººä¿¡æ¯
+void scan()//ä¯ÀÀºòÑ¡ÈËĞÅÏ¢
 {
 
     read();
 
-    printf("å€™é€‰äººèµ„æ–™ï¼š\n");
+    printf("ºòÑ¡ÈË×ÊÁÏ£º\n");
 
     printf("***************************************************************\n");
 
     for(i=0;i<c_total;i++)
     {
-        printf("å·ç :%-15ld",c_man[i].number);
-        printf("å§“å:%-19s",c_man[i].name);
-        printf("ç®€ä»‹:%s\n",c_man[i].intro);
+        printf("ºÅÂë:%-15ld",c_man[i].number);
+        printf("ĞÕÃû:%-19s",c_man[i].name);
+        printf("¼ò½é:%s\n",c_man[i].intro);
     }
     printf("***************************************************************");
-    printf("\næŒ‰ä»»æ„é”®è¿”å›é¦–é¡µï¼");
+    printf("\n°´ÈÎÒâ¼ü·µ»ØÊ×Ò³£¡");
     getch();
 }
 
-void search() //æŸ¥è¯¢å€™é€‰äººä¿¡æ¯
+void search() //²éÑ¯ºòÑ¡ÈËĞÅÏ¢
 {
 
     char c;
@@ -468,16 +468,16 @@ void search() //æŸ¥è¯¢å€™é€‰äººä¿¡æ¯
 
     do
     {
-        printf("\n\tè¯·è¾“å…¥è¦æŸ¥è¯¢çš„å€™é€‰äººå·ç :");
+        printf("\n\tÇëÊäÈëÒª²éÑ¯µÄºòÑ¡ÈËºÅÂë:");
         scanf("%ld",&number);
         for(i=0;i<c_total;i++)
         {
             if(number==c_man[i].number)
             {
-                printf("\tæ‚¨è¦æŸ¥è¯¢çš„å€™é€‰äººä¿¡æ¯å¦‚ä¸‹:\n\n");
-                printf("\tå·ç :%ld \n",c_man[i].number);
-                printf("\tå§“å:%s \n",c_man[i].name);
-                printf("\tç®€ä»‹:%s \n",c_man[i].intro);
+                printf("\tÄúÒª²éÑ¯µÄºòÑ¡ÈËĞÅÏ¢ÈçÏÂ:\n\n");
+                printf("\tºÅÂë:%ld \n",c_man[i].number);
+                printf("\tĞÕÃû:%s \n",c_man[i].name);
+                printf("\t¼ò½é:%s \n",c_man[i].intro);
                 flag=1;
                 break;
             }
@@ -488,24 +488,24 @@ void search() //æŸ¥è¯¢å€™é€‰äººä¿¡æ¯
         }
         else
         {
-            printf("\tå¯¹ä¸èµ·ï¼Œæ²¡æœ‰æ‚¨è¦æŸ¥è¯¢çš„å€™é€‰äºº\n");
+            printf("\t¶Ô²»Æğ£¬Ã»ÓĞÄúÒª²éÑ¯µÄºòÑ¡ÈË\n");
         }
-            printf("\tè¦ç»§ç»­æŸ¥è¯¢å€™é€‰äººå—?æ˜¯(Y)/å¦(N): ");
+            printf("\tÒª¼ÌĞø²éÑ¯ºòÑ¡ÈËÂğ?ÊÇ(Y)/·ñ(N): ");
         getchar();
         c=getchar();
     }while((c=='Y')||(c=='y'));
 }
 
-void sort()//æ•´ç†æ‰€æœ‰æŠ•ç¥¨
+void sort()//ÕûÀíËùÓĞÍ¶Æ±
 {
 
     int i,k,j;
 
-    candidate c_man2[N]/*å­˜æ”¾æ’åºåçš„æ•°æ® */,   temp;
+    candidate c_man2[N]/*´æ·ÅÅÅĞòºóµÄÊı¾İ */,   temp;
     read();
     for(i=0;i<c_total;i++)
        c_man2[i]=c_man[i];
-    for(i=0;i<c_total-1;i++)//ç”¨é€‰æ‹©æ³•æ’åº
+    for(i=0;i<c_total-1;i++)//ÓÃÑ¡Ôñ·¨ÅÅĞò
     {
        k=i;
        for(j=i+1;j<c_total;j++)
@@ -519,21 +519,21 @@ void sort()//æ•´ç†æ‰€æœ‰æŠ•ç¥¨
          c_man2[i]=c_man2[k];
          c_man2[k]=temp;
        }
-    } //æ’åºç»“æŸ
-    printf("ç¥¨æ•°ä»é«˜åˆ°ä½æ’åˆ—å¦‚ä¸‹:\n");
+    } //ÅÅĞò½áÊø
+    printf("Æ±Êı´Ó¸ßµ½µÍÅÅÁĞÈçÏÂ:\n");
     printf("***********************************************\n");
-    printf("*å·ç            å€™é€‰äºº           ç¥¨æ•°         *\n");
+    printf("*ºÅÂë           ºòÑ¡ÈË           Æ±Êı         *\n");
     printf("***********************************************\n");
-    for(i=0;i<c_total;i++)       //è¾“å‡ºæ’åºåçš„ç»“æœ
+    for(i=0;i<c_total;i++)       //Êä³öÅÅĞòºóµÄ½á¹û
     {
        printf("* %-13ld %-13s    %-6d       *\n",c_man2[i].number,c_man2[i].name,c_man2[i].vote);
     }
     printf("***********************************************\n");
-    printf("æŒ‰ä»»æ„é”®è¿”å›é¦–é¡µï¼\n");
+    printf("°´ÈÎÒâ¼ü·µ»ØÊ×Ò³£¡\n");
     fflush(stdin);
     getch();
 }
-void effectivevoting()//æœ‰æ•ˆæŠ•ç¥¨æ•°--
+void effectivevoting()//ÓĞĞ§Í¶Æ±Êı--
 {
     read();
     int sum=0;
@@ -546,18 +546,18 @@ void effectivevoting()//æœ‰æ•ˆæŠ•ç¥¨æ•°--
             sum=sum+c_man[i].vote;
         }
     }
-  printf("æœ‰æ•ˆæŠ•ç¥¨æ•°ä¸ºï¼š%ld\n",sum);
+  printf("ÓĞĞ§Í¶Æ±ÊıÎª£º%ld\n",sum);
 }
 
 
-void empty()//æ¸…ç©ºå€™é€‰äºº
+void empty()//Çå¿ÕºòÑ¡ÈË
 {
      FILE * fp;
-    fp = fopen("DataFile.txt", "w");//ä»¥åªå†™æ–¹å¼æ‰“å¼€æ–‡ä»¶æ—¶ å…¶å®å°±æ˜¯åˆ›å»ºäº†ä¸€ä¸ªæ–°æ–‡ä»¶(ç©ºçš„)ã€‚ å¦‚æœæœ¬æ¥å­˜åœ¨æ–‡ä»¶ï¼Œä¹ŸåŒæ ·ä¼šè¢«è¦†ç›–
+    fp = fopen("DataFile.txt", "w");//ÒÔÖ»Ğ´·½Ê½´ò¿ªÎÄ¼şÊ± ÆäÊµ¾ÍÊÇ´´½¨ÁËÒ»¸öĞÂÎÄ¼ş(¿ÕµÄ)¡£ Èç¹û±¾À´´æÔÚÎÄ¼ş£¬Ò²Í¬Ñù»á±»¸²¸Ç
     if(fp == NULL)
         printf("do empty file %s failed\n", fp);
     else fclose(fp);
-     printf("æ•°æ®æ¸…ç©ºå®Œæˆ\n");
+     printf("Êı¾İÇå¿ÕÍê³É\n");
 
 
 }
@@ -565,29 +565,29 @@ void main()
 {
 
     FILE * fp=NULL;
-    char DataFile[20]="ç”¨æˆ·.txt";
-    char relogin;//æ˜¯å¦é‡æ–°ç™»å½•çš„æ ‡å¿—
+    char DataFile[20]="ÓÃ»§.txt";
+    char relogin;//ÊÇ·ñÖØĞÂµÇÂ¼µÄ±êÖ¾
     int success=0;
     user input_user,temp_user;
-    printf("ç®¡ç†å‘˜è´¦å·ï¼šæ»•å¥  å¯†ç éƒ½ä¸º123456\n");
+    printf("¹ÜÀíÔ±ÕËºÅ£ºëø½¡  ÃÜÂë¶¼Îª123456\n");
     printf("\n");
     printf("*************************************************************\n");
-    printf("********************æ¬¢è¿ç™»å½•ç”µå­æŠ•ç¥¨ç³»ç»Ÿ*********************\n");
+    printf("********************»¶Ó­µÇÂ¼µç×ÓÍ¶Æ±ÏµÍ³*********************\n");
     printf("*************************************************************\n");
     printf("*                                                           *\n");
 again:
-        printf("                è¯·è¾“å…¥ç”¨æˆ·å:            &&");
+        printf("                ÇëÊäÈëÓÃ»§Ãû:            &&");
         scanf("%s",input_user.name);
-        printf("                  è¯·è¾“å…¥å¯†ç :            &&");
+        printf("                  ÇëÊäÈëÃÜÂë:            &&");
         scanf("%s",input_user.ps);
         printf("*************************************************************\n");
     fflush(stdin);
 
-     fp=fopen("ç”¨æˆ·.txt","rb");//è¯»å…¥åŸå§‹æ•°æ®,ç”¨äºæ£€æŸ¥è¾“å…¥æ˜¯å¦æœ‰é‡å¤
+     fp=fopen("ÓÃ»§.txt","rb");//¶ÁÈëÔ­Ê¼Êı¾İ,ÓÃÓÚ¼ì²éÊäÈëÊÇ·ñÓĞÖØ¸´
 
     if(fp==NULL)
     {
-        printf("\nOpen file %s fail! ä»»æ„é”®ç»“æŸ \n",DataFile);
+        printf("\nOpen file %s fail! ÈÎÒâ¼ü½áÊø \n",DataFile);
         perror("Open file fail");
         getch();
         exit(1);
@@ -601,11 +601,11 @@ again:
 
     fclose(fp);
 
-     if(strcmp(input_user.name,"æ»•å¥")==0 && (strcmp(input_user.ps,"123456")==0))//æ ¡éªŒç”¨æˆ·åå’Œå¯†ç ,è‹¥æ˜¯ç®¡ç†å‘˜,å¹¶è°ƒç”¨ç®¡ç†å‘˜ç•Œé¢
+     if(strcmp(input_user.name,"ëø½¡")==0 && (strcmp(input_user.ps,"123456")==0))//Ğ£ÑéÓÃ»§ÃûºÍÃÜÂë,ÈôÊÇ¹ÜÀíÔ±,²¢µ÷ÓÃ¹ÜÀíÔ±½çÃæ
      {
             printf("\nlogin successful!");
             success=1;
-            printf("\n\n\n\n\n\n\n         æ‚¨æ˜¯ç®¡ç†å‘˜!æ¬¢è¿æ‚¨ç™»å½•ç³»ç»Ÿ!æ­£åœ¨è¿›å…¥ç®¡ç†å‘˜ç•Œé¢...\n");
+            printf("\n\n\n\n\n\n\n         ÄúÊÇ¹ÜÀíÔ±!»¶Ó­ÄúµÇÂ¼ÏµÍ³!ÕıÔÚ½øÈë¹ÜÀíÔ±½çÃæ...\n");
             main_a();
         }
     else
@@ -620,7 +620,7 @@ again:
         {
             printf("\nlogin successful!");
             success=1;
-            printf("\n\n\n\n\n\n\n         æ‚¨æ˜¯æŠ•ç¥¨è€…!æ¬¢è¿æ‚¨ç™»å½•ç³»ç»Ÿ!æ­£åœ¨è¿›å…¥æŠ•ç¥¨è€…ç•Œé¢...\n");
+            printf("\n\n\n\n\n\n\n         ÄúÊÇÍ¶Æ±Õß!»¶Ó­ÄúµÇÂ¼ÏµÍ³!ÕıÔÚ½øÈëÍ¶Æ±Õß½çÃæ...\n");
             main_v();
         }
 
@@ -631,9 +631,9 @@ again:
     if(success==0)
     {
         printf("%d",c_total);
-        fflush(stdin);//æ–‡ä»¶æ•°æ®æ›´æ–°
+        fflush(stdin);//ÎÄ¼şÊı¾İ¸üĞÂ
         printf("%d",c_total);
-        printf("\nç”¨æˆ·åæˆ–å¯†ç é”™è¯¯ï¼ç»§ç»­è¾“å…¥å—ï¼Ÿæ˜¯(Y)/å¦(N): ");
+        printf("\nÓÃ»§Ãû»òÃÜÂë´íÎó£¡¼ÌĞøÊäÈëÂğ£¿ÊÇ(Y)/·ñ(N): ");
         fflush(stdin);
 
         relogin=getchar();
@@ -643,7 +643,7 @@ again:
         }
         else
         {
-            printf("ç»“æŸ\n");
+            printf("½áÊø\n");
             exit(0);
         }
     }
@@ -659,7 +659,7 @@ void read1()
     fp=fopen(DataFile,"rb");
     if(fp==NULL)
     {
-        printf("\nOpen file %s fail! ä»»æ„é”®ç»“æŸ \n",DataFile);
+        printf("\nOpen file %s fail! ÈÎÒâ¼ü½áÊø \n",DataFile);
         perror("Open file fail");
         getch();
         exit(1);
@@ -672,18 +672,18 @@ void read1()
 
 }
 
-void Votexiugai()//ç¥¨æ•°ä¿®æ”¹
+void Votexiugai()//Æ±ÊıĞŞ¸Ä
 {
-    long candidatenum;//å®šä¹‰è¿›è¡Œæ“ä½œæ—¶çš„ä¸´æ—¶ç»“æ„ä½“å˜é‡
+    long candidatenum;//¶¨Òå½øĞĞ²Ù×÷Ê±µÄÁÙÊ±½á¹¹Ìå±äÁ¿
     int i,flag;
-    char DataFile[20]="DataFile.txt",next;// DataFileå­˜å‚¨å€™é€‰äººä¿¡æ¯çš„æ–‡ä»¶åï¼Œnextä¸ºæ˜¯å¦è¿›è¡Œä¸‹ä¸€æ¬¡æŠ•æ ‡æ“ä½œçš„é€‰é¡¹
+    char DataFile[20]="DataFile.txt",next;// DataFile´æ´¢ºòÑ¡ÈËĞÅÏ¢µÄÎÄ¼şÃû£¬nextÎªÊÇ·ñ½øĞĞÏÂÒ»´ÎÍ¶±ê²Ù×÷µÄÑ¡Ïî
     candidate TempS;
     FILE *fp;
 
 
 begin:
 
-    flag=0;//flagç”¨æ¥æ ‡å¿—æ˜¯å¦æ‰¾å¯¹åº”ç¼–å·
+    flag=0;//flagÓÃÀ´±êÖ¾ÊÇ·ñÕÒ¶ÔÓ¦±àºÅ
     read();
 
 
@@ -698,12 +698,12 @@ begin:
     }
     if(flag)
     {
-        printf("ä¿®æ”¹æˆåŠŸ\n");
+        printf("ĞŞ¸Ä³É¹¦\n");
 
 
         fp=fopen(DataFile,"wb");
 
-        if(fp==NULL)//å¦‚æœå½“å‰æ–‡ä»¶ä¸å­˜åœ¨ï¼Œæç¤ºæ‰“å¼€æ–‡ä»¶å¤±è´¥
+        if(fp==NULL)//Èç¹ûµ±Ç°ÎÄ¼ş²»´æÔÚ£¬ÌáÊ¾´ò¿ªÎÄ¼şÊ§°Ü
         {
             printf("\nOpen file is fail!End with any key.\n",DataFile);
             perror("Open file fail");
@@ -719,7 +719,7 @@ begin:
         fclose(fp);
     }
 
-    fp=fopen(DataFile,"rb");// æ˜¾ç¤ºæŠ•ç¥¨åçš„æƒ…å†µ
+    fp=fopen(DataFile,"rb");// ÏÔÊ¾Í¶Æ±ºóµÄÇé¿ö
 
 
     if(fp==NULL)
@@ -730,15 +730,15 @@ begin:
         exit(1);
     }
 
-    printf("æ•´ç†åçš„æœ€æ–°æŠ•ç¥¨æƒ…å†µ:\n");
-        printf("\nå€™é€‰äººå·ç      \tå€™é€‰äººå§“å      \tç¥¨æ•°\n");//"\t"  æ¨ªå‘è·³åˆ°ä¸‹ä¸€åˆ¶è¡¨ç¬¦ä½ç½®
+    printf("ÕûÀíºóµÄ×îĞÂÍ¶Æ±Çé¿ö:\n");
+        printf("\nºòÑ¡ÈËºÅÂë     \tºòÑ¡ÈËĞÕÃû      \tÆ±Êı\n");//"\t"  ºáÏòÌøµ½ÏÂÒ»ÖÆ±í·ûÎ»ÖÃ
     while(fread(&TempS,sizeof(candidate),1,fp)!=(int)NULL)
     {
         if(TempS.number!=0)
         printf("\n%ld            \t%s              \t%d \n",TempS.number,TempS.name,TempS.vote);
     }
     fclose(fp);
-    printf("\nç»§ç»­å—?æ˜¯(Y)/å¦(N): ");
+    printf("\n¼ÌĞøÂğ?ÊÇ(Y)/·ñ(N): ");
     fflush(stdin);
     next=getchar();
     putchar('\n');
